@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import data from "../data/components.json";
 import CodeTabs from "../components/CodeTabs";
+import { getDemoForComponentId } from "../components/demos";
 
 /**
  * PUBLIC_INTERFACE
@@ -31,6 +32,8 @@ export default function ComponentDetail() {
     );
   }
 
+  const Demo = getDemoForComponentId(comp.id);
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <button onClick={() => navigate(-1)} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">&larr; Back</button>
@@ -46,30 +49,11 @@ export default function ComponentDetail() {
         <div className="card p-6">
           <h2 className="font-semibold">Live Preview</h2>
           <div className="mt-4 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-4 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xs">
-            {comp.id === 'button-primary' && (
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-ocean/40"
-                style={{ backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' }}
-              >
-                Get Started
-              </button>
-            )}
-            {comp.id === 'card-stats' && (
-              <div className="rounded-xl p-4 bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft">
-                <div className="text-sm text-gray-500 dark:text-gray-400">Active Users</div>
-                <div className="mt-2 flex items-baseline gap-2">
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">12,451</div>
-                  <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded">+4.2%</span>
-                </div>
-              </div>
-            )}
-            {comp.id === 'input-floating-label' && (
-              <div className="relative">
-                <input placeholder=" " className="peer input placeholder-transparent" />
-                <label className="absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all">
-                  Email
-                </label>
-              </div>
+            {/* Render interactive demo if available; fallback to minimal static preview if none */}
+            {Demo ? (
+              Demo
+            ) : (
+              <div className="text-sm text-gray-500 dark:text-gray-400">No interactive demo available for this component.</div>
             )}
           </div>
           <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">{comp.description}</p>
