@@ -1,0 +1,53 @@
+/* Tailwind base imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ocean Professional Theme Helpers */
+:root {
+  --ocean-primary: #2563EB;
+  --ocean-secondary: #F59E0B;
+  --ocean-success: #F59E0B;
+  --ocean-error: #EF4444;
+  --ocean-bg: #f9fafb;
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-[var(--ocean-bg)] text-[var(--ocean-text)];
+}
+
+.dark body {
+  @apply bg-gray-950 text-gray-100;
+}
+
+/* Shared component styles */
+.btn {
+  @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors shadow-soft;
+  @apply bg-ocean-primary text-white hover:bg-blue-600;
+}
+
+.btn-secondary {
+  @apply bg-ocean-secondary text-white hover:bg-amber-600;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-900 rounded-xl border border-gray-200/70 dark:border-gray-800 shadow-soft;
+}
+
+.input {
+  @apply w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ocean-primary/40;
+}
+
+/* Animations */
+.fade-in {
+  @apply transition-opacity duration-300 ease-out opacity-0;
+}
+.fade-in.visible {
+  @apply opacity-100;
+}

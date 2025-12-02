@@ -1,82 +1,55 @@
-# Lightweight React Template for KAVIA
+# Ocean UI Component Browser (React + Tailwind)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A web app to browse, preview, and copy React UI components styled with Tailwind CSS. Features search, filters, dark/light mode, responsive layout, and code copy (JSX & HTML).
+
+## Quick Start
+
+- Install dependencies: `npm install`
+- Run dev server: `npm start`
+- Open http://localhost:3000
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Home page with header/navbar, search, and dark/light toggle
+- Sidebar with filterable categories and tags
+- Responsive grid of components with quick actions: View, Copy JSX, Copy HTML
+- Component detail page with live preview and code tabs
+- Fuzzy search by name, category, and tags (client-side)
+- Helpful empty/error states and loading skeletons
+- Ocean Professional theme with subtle gradients and smooth transitions
 
-## Getting Started
+## Add New Components
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+1. Open `src/data/components.json`.
+2. Append a new object in the `components` array:
+```json
+{
+  "id": "badge-notification",
+  "name": "Notification Badge",
+  "category": "Feedback",
+  "tags": ["responsive", "light", "dark"],
+  "previewType": "live",
+  "description": "A badge to show notifications count.",
+  "jsx": "export function NotificationBadge({ count = 3 }) { return (<span className=\\"inline-flex items-center justify-center rounded-full bg-red-600 text-white text-xs px-2 py-0.5\\">{count}</span>); }",
+  "html": "<span class=\\"inline-flex items-center justify-center rounded-full bg-red-600 text-white text-xs px-2 py-0.5\\">3</span>",
+  "props": [
+    { "name": "count", "type": "number", "default": 3, "description": "Displayed number" }
+  ]
 }
 ```
+3. Optionally, add new category/tag to `meta.categories` or `meta.tags`.
+4. Save the file and the grid will update.
 
-### Components
+Notes:
+- For advanced interactive previews, you may add conditional rendering logic in `ComponentCard` and `ComponentDetail` pages keyed by `id`.
+- For HTML copy, you can either store a pre-rendered HTML snippet in JSON (recommended) or implement JSX-to-HTML conversion per component.
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Theming
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+- Dark/light mode uses Tailwind’s `dark` class and persists to `localStorage`.
+- Theme utilities and Ocean colors are provided in `tailwind.config.js` and `src/styles/tailwind.css`.
 
-## Learn More
+## Environment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app does not require external APIs. It respects existing env variables, but does not depend on them.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

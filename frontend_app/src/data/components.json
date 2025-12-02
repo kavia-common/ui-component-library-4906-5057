@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "updatedAt": "2025-12-01T00:00:00.000Z",
+    "categories": ["Navigation", "Forms", "Buttons", "Cards", "Feedback"],
+    "tags": ["responsive", "accessible", "animated", "dark", "light", "simple"]
+  },
+  "components": [
+    {
+      "id": "button-primary",
+      "name": "Primary Button",
+      "category": "Buttons",
+      "tags": ["responsive", "accessible", "dark", "light", "simple"],
+      "previewType": "live",
+      "description": "A primary call-to-action button with Ocean Professional colors.",
+      "jsx": "export function PrimaryButton({ children = \\\"Get Started\\\", onClick }) { return (<button onClick={onClick} className=\\\"inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors\\\">{children}</button>); }",
+      "html": "<button class=\\\"inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors\\\">Get Started</button>",
+      "props": [
+        { "name": "children", "type": "ReactNode", "default": "Get Started", "description": "Button label" },
+        { "name": "onClick", "type": "function", "default": "undefined", "description": "Click handler" }
+      ]
+    },
+    {
+      "id": "card-stats",
+      "name": "Stats Card",
+      "category": "Cards",
+      "tags": ["responsive", "animated", "dark", "light"],
+      "previewType": "live",
+      "description": "Card with subtle gradient background and number emphasis.",
+      "jsx": "export function StatsCard({ title = \\\"Active Users\\\", value = \\\"12,451\\\", change = \\\"+4.2%\\\" }) { return (<div className=\\\"rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft transition-colors\\\"><div className=\\\"text-sm text-gray-500 dark:text-gray-400\\\">{title}</div><div className=\\\"mt-2 flex items-baseline gap-2\\\"><div className=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">{value}</div><span className=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">{change}</span></div></div>); }",
+      "html": "<div class=\\\"rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft\\\"><div class=\\\"text-sm text-gray-500 dark:text-gray-400\\\">Active Users</div><div class=\\\"mt-2 flex items-baseline gap-2\\\"><div class=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">12,451</div><span class=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">+4.2%</span></div></div>",
+      "props": [
+        { "name": "title", "type": "string", "default": "Active Users", "description": "Card title" },
+        { "name": "value", "type": "string", "default": "12,451", "description": "Primary metric" },
+        { "name": "change", "type": "string", "default": "+4.2%", "description": "Change indicator" }
+      ]
+    },
+    {
+      "id": "input-floating-label",
+      "name": "Floating Label Input",
+      "category": "Forms",
+      "tags": ["responsive", "accessible", "dark", "light"],
+      "previewType": "live",
+      "description": "Text input with floating label and focus ring.",
+      "jsx": "export function FloatingLabelInput({ id = \\\"email\\\", label = \\\"Email\\\", type = \\\"email\\\", placeholder = \\\"you@example.com\\\" }) { return (<div className=\\\"relative\\\"><input id={id} type={type} placeholder=\\\" \\\" className=\\\"peer input placeholder-transparent\\\"></input><label htmlFor={id} className=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">{label}</label></div>); }",
+      "html": "<div class=\\\"relative\\\"><input id=\\\"email\\\" type=\\\"email\\\" placeholder=\\\" \\\" class=\\\"peer w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500/40 placeholder-transparent\\\"><label for=\\\"email\\\" class=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">Email</label></div>",
+      "props": [
+        { "name": "id", "type": "string", "default": "email", "description": "Input id" },
+        { "name": "label", "type": "string", "default": "Email", "description": "Floating label text" },
+        { "name": "type", "type": "string", "default": "email", "description": "Input type" }
+      ]
+    }
+  ]
+}

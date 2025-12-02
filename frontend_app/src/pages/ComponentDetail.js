@@ -1,0 +1,88 @@
+import { useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import data from "../data/components.json";
+import CodeTabs from "../components/CodeTabs";
+
+/**
+ * PUBLIC_INTERFACE
+ * ComponentDetail
+ * Shows a component's live preview, description, props, and code in tabs.
+ */
+export default function ComponentDetail() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const comp = useMemo(() => data.components.find((c) => c.id === id), [id]);
+
+  if (!comp) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-10">
+        <div className="card p-8 text-center">
+          <h2 className="font-semibold">Component not found</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400">We couldn't locate the requested component.</p>
+          <button className="btn mt-4" onClick={() => navigate('/')}>Back to Home</button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-8">
+      <button onClick={() => navigate(-1)} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">&larr; Back</button>
+
+      <div className="mt-4 flex items-start justify-between gap-6 flex-wrap">
+        <div>
+          <h1 className="text-2xl font-bold">{comp.name}</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{comp.category} • {comp.tags?.map(t => `#${t}`).join(' ')}</p>
+        </div>
+      </div>
+
+      <div className="mt-6 grid lg:grid-cols-2 gap-6">
+        <div className="card p-6">
+          <h2 className="font-semibold">Live Preview</h2>
+          <div className="mt-4 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-4 bg-gradient-to-br from-blue-500/5 to-gray-50 dark:from-blue-500/10 dark:to-gray-900/50">
+            {comp.id === 'button-primary' && (
+              <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors">
+                Get Started
+              </button>
+            )}
+            {comp.id === 'card-stats' && (
+              <div className="rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft">
+                <div className="text-sm text-gray-500 dark:text-gray-400">Active Users</div>
+                <div className="mt-2 flex items-baseline gap-2">
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">12,451</div>
+                  <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded">+4.2%</span>
+                </div>
+              </div>
+            )}
+            {comp.id === 'input-floating-label' && (
+              <div className="relative">
+                <input placeholder=" " className="peer input placeholder-transparent" />
+                <label className="absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all">
+                  Email
+                </label>
+              </div>
+            )}
+          </div>
+          <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">{comp.description}</p>
+          {comp.props?.length ? (
+            <div className="mt-4">
+              <h3 className="text-sm font-semibold">Props</h3>
+              <ul className="mt-2 space-y-1">
+                {comp.props.map((p) => (
+                  <li key={p.name} className="text-sm text-gray-600 dark:text-gray-300">
+                    <span className="font-mono font-medium">{p.name}</span>
+                    <span className="text-gray-400">: {p.type}</span>
+                    {p.default ? <span className="text-gray-400"> • default: {p.default}</span> : null}
+                    {p.description ? <span className="text-gray-500"> — {p.description}</span> : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+
+        <CodeTabs jsx={comp.jsx} html={comp.html} />
+      </div>
+    </div>
+  );
+}
