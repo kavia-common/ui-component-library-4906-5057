@@ -100,6 +100,7 @@ export default function Header({ theme, onToggleTheme }) {
           onClick={() => setMobileOpen((v) => !v)}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
         >
           Menu
         </button>

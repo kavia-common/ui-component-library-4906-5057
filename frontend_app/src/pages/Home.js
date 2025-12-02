@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 grid md:grid-cols-[280px_1fr] gap-6">
       <Sidebar categories={categories} tags={tags} />
-      <main>
+      <main aria-label="Component browser">
         <div className="mb-4">
           <h1 className="text-xl font-semibold">Browse Components</h1>
           <p className="text-sm text-gray-600 dark:text-gray-300">Ocean Professional theme • {items.length} items</p>

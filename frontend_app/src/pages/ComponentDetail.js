@@ -8,6 +8,7 @@ import { getDemoForComponentId } from "../components/demos";
  * PUBLIC_INTERFACE
  * ComponentDetail
  * Shows a component's live preview, description, props, and code in tabs.
+ * The live preview uses the demos module which provides accessible, keyboard-friendly samples.
  */
 export default function ComponentDetail() {
   const { id } = useParams();
