@@ -30,7 +30,14 @@ export default function CodeTabs({ jsx = "", html = "" }) {
           <button onClick={() => setTab('jsx')} className={`px-4 py-2 text-sm border-b-2 ${active('jsx')}`}>JSX</button>
           <button onClick={() => setTab('html')} className={`px-4 py-2 text-sm border-b-2 ${active('html')}`}>HTML</button>
         </div>
-        <button id="copy-code-btn" onClick={onCopy} className="btn m-2">Copy</button>
+        <button
+          id="copy-code-btn"
+          onClick={onCopy}
+          className="m-2 inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-ocean/40"
+          style={{ backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' }}
+        >
+          Copy
+        </button>
       </div>
       <pre className="p-4 overflow-auto text-sm leading-relaxed">
         <code dangerouslySetInnerHTML={{ __html: simpleHighlight(code) }} />

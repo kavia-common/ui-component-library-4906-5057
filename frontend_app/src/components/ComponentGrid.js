@@ -27,9 +27,9 @@ export default function ComponentGrid({ items, loading = false }) {
 
   if (!items?.length) {
     return (
-      <div className="card p-8 text-center">
-        <div className="text-3xl">🔍</div>
-        <h3 className="mt-2 font-semibold">No components found</h3>
+      <div className="card p-10 text-center bg-white/70 dark:bg-gray-900/70 backdrop-blur-xs">
+        <div className="text-4xl">🔍</div>
+        <h3 className="mt-2 font-semibold text-lg">No components found</h3>
         <p className="text-sm text-gray-500 dark:text-gray-400">
           Try adjusting your search, category, or tag filters.
         </p>

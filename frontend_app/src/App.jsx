@@ -24,17 +24,21 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      {/* App shell background as requested */}
       <div className="min-h-screen bg-ocean-gradient">
-        <Header theme={theme} onToggleTheme={toggleTheme} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/components/:id" element={<ComponentDetail />} />
-        </Routes>
-        <footer className="mt-10 border-t border-gray-200 dark:border-gray-800">
-          <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-gray-500 dark:text-gray-400">
-            <div>Ocean UI Components • Tailwind + React • Dark/Light mode</div>
-          </div>
-        </footer>
+        {/* Layer subtle noise/glass via container to enhance readability */}
+        <div className="min-h-screen">
+          <Header theme={theme} onToggleTheme={toggleTheme} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/components/:id" element={<ComponentDetail />} />
+          </Routes>
+          <footer className="mt-10 border-t border-white/30 dark:border-white/10 backdrop-blur-sm bg-white/40 dark:bg-gray-900/40">
+            <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-gray-700 dark:text-gray-300">
+              <div>Ocean UI Components • Tailwind + React • Dark/Light mode</div>
+            </div>
+          </footer>
+        </div>
       </div>
     </BrowserRouter>
   );

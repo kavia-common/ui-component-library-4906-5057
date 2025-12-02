@@ -16,10 +16,16 @@ export default function ComponentDetail() {
   if (!comp) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-10">
-        <div className="card p-8 text-center">
+        <div className="card p-8 text-center bg-white/70 dark:bg-gray-900/70 backdrop-blur-xs">
           <h2 className="font-semibold">Component not found</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">We couldn't locate the requested component.</p>
-          <button className="btn mt-4" onClick={() => navigate('/')}>Back to Home</button>
+          <button
+            className="mt-4 inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white shadow-soft"
+            style={{ backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' }}
+            onClick={() => navigate('/')}
+          >
+            Back to Home
+          </button>
         </div>
       </div>
     );
@@ -39,14 +45,17 @@ export default function ComponentDetail() {
       <div className="mt-6 grid lg:grid-cols-2 gap-6">
         <div className="card p-6">
           <h2 className="font-semibold">Live Preview</h2>
-          <div className="mt-4 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-4 bg-gradient-to-br from-blue-500/5 to-gray-50 dark:from-blue-500/10 dark:to-gray-900/50">
+          <div className="mt-4 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-4 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xs">
             {comp.id === 'button-primary' && (
-              <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-ocean/40"
+                style={{ backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' }}
+              >
                 Get Started
               </button>
             )}
             {comp.id === 'card-stats' && (
-              <div className="rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft">
+              <div className="rounded-xl p-4 bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft">
                 <div className="text-sm text-gray-500 dark:text-gray-400">Active Users</div>
                 <div className="mt-2 flex items-baseline gap-2">
                   <div className="text-2xl font-bold text-gray-900 dark:text-white">12,451</div>

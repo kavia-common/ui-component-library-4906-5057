@@ -18,31 +18,10 @@ export default function Home() {
   const categories = data.meta.categories;
   const tags = data.meta.tags;
 
-  const filtered = useMemo(() => {
+  useMemo(() => {
     setLoading(true);
-    const params = new URLSearchParams(location.search);
-    const q = (params.get('q') || '').trim();
-    const category = params.get('category') || '';
-    const selectedTags = (params.get('tags') || '').split(',').filter(Boolean);
-
-    let list = components;
-    if (category) {
-      list = list.filter((c) => c.category.toLowerCase() === category.toLowerCase());
-    }
-    if (selectedTags.length) {
-      list = list.filter((c) => selectedTags.every((t) => c.tags.includes(t)));
-    }
-    if (q) {
-      const fuse = new Fuse(list, {
-        keys: ['name', 'category', 'tags'],
-        threshold: 0.4,
-      });
-      list = fuse.search(q).map((r) => r.item);
-    }
-    // simulate brief load for skeleton effect
     const t = setTimeout(() => setLoading(false), 100);
     return () => clearTimeout(t);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
   const items = useMemo(() => {
@@ -61,7 +40,6 @@ export default function Home() {
   }, [location.search, components]);
 
   useEffect(() => {
-    // initial small loading
     const t = setTimeout(() => setLoading(false), 150);
     return () => clearTimeout(t);
   }, []);
@@ -72,7 +50,7 @@ export default function Home() {
       <main>
         <div className="mb-4">
           <h1 className="text-xl font-semibold">Browse Components</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Ocean Professional theme • {items.length} items</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">Ocean Professional theme • {items.length} items</p>
         </div>
         <ComponentGrid items={items} loading={loading} />
       </main>

@@ -19,29 +19,31 @@ html, body, #root {
 }
 
 body {
-  @apply bg-[var(--ocean-bg)] text-[var(--ocean-text)];
+  @apply text-[var(--ocean-text)];
+  /* background gradient defined via class on App shell */
 }
 
 .dark body {
-  @apply bg-gray-950 text-gray-100;
+  @apply text-gray-100;
 }
 
 /* Shared component styles */
 .btn {
-  @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors shadow-soft;
-  @apply bg-ocean-primary text-white hover:bg-blue-600;
+  @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-ocean/40;
+  background-image: linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%);
 }
 
 .btn-secondary {
-  @apply bg-ocean-secondary text-white hover:bg-amber-600;
+  @apply text-white hover:bg-amber-600 transition shadow-soft;
+  background-color: #F59E0B;
 }
 
 .card {
-  @apply bg-white dark:bg-gray-900 rounded-xl border border-gray-200/70 dark:border-gray-800 shadow-soft;
+  @apply bg-white/80 dark:bg-gray-900/80 rounded-xl border border-gray-200/70 dark:border-gray-800 ring-1 ring-black/5 shadow-soft backdrop-blur-xs;
 }
 
 .input {
-  @apply w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ocean-primary/40;
+  @apply w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ocean/40 backdrop-blur-xs;
 }
 
 /* Animations */
