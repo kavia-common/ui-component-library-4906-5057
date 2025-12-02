@@ -1,20 +1,44 @@
 {
   "meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "updatedAt": "2025-12-02T00:00:00.000Z",
-    "categories": ["Navigation", "Forms", "Buttons", "Cards", "Feedback"],
-    "tags": ["responsive", "accessible", "animated", "dark", "light", "simple"]
+    "categories": [
+      "Layout",
+      "Auth",
+      "Navigation",
+      "Content/Blocks",
+      "UI Elements",
+      "Data Display",
+      "Interaction",
+      "Chat",
+      "Forms",
+      "Buttons",
+      "Cards",
+      "Feedback"
+    ],
+    "tags": [
+      "responsive",
+      "accessible",
+      "animated",
+      "dark",
+      "light",
+      "simple",
+      "gradient",
+      "glass",
+      "mobile",
+      "desktop"
+    ]
   },
   "components": [
     {
       "id": "button-primary",
       "name": "Primary Button",
       "category": "Buttons",
-      "tags": ["responsive", "accessible", "dark", "light", "simple"],
+      "tags": ["responsive", "accessible", "dark", "light", "simple", "gradient"],
       "previewType": "live",
-      "description": "A primary call-to-action button with Ocean Professional colors.",
-      "jsx": "export function PrimaryButton({ children = \\\"Get Started\\\", onClick }) { return (<button onClick={onClick} className=\\\"inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors\\\">{children}</button>); }",
-      "html": "<button class=\\\"inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-semibold shadow-soft transition-colors\\\">Get Started</button>",
+      "description": "A primary call-to-action button with Ocean Professional gradient.",
+      "jsx": "export function PrimaryButton({ children = \\\"Get Started\\\", onClick }) { return (<button onClick={onClick} className=\\\"inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-ocean/40\\\" style={{ backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' }}>{children}</button>); }",
+      "html": "<button class=\\\"inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold text-white shadow-soft transition-all focus:outline-none focus:ring-2 focus:ring-blue-700/40\\\" style=\\\"background-image: linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%);\\\">Get Started</button>",
       "props": [
         { "name": "children", "type": "ReactNode", "default": "Get Started", "description": "Button label" },
         { "name": "onClick", "type": "function", "default": "undefined", "description": "Click handler" }
@@ -24,11 +48,11 @@
       "id": "card-stats",
       "name": "Stats Card",
       "category": "Cards",
-      "tags": ["responsive", "animated", "dark", "light"],
+      "tags": ["responsive", "animated", "dark", "light", "glass"],
       "previewType": "live",
-      "description": "Card with subtle gradient background and number emphasis.",
-      "jsx": "export function StatsCard({ title = \\\"Active Users\\\", value = \\\"12,451\\\", change = \\\"+4.2%\\\" }) { return (<div className=\\\"rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft transition-colors\\\"><div className=\\\"text-sm text-gray-500 dark:text-gray-400\\\">{title}</div><div className=\\\"mt-2 flex items-baseline gap-2\\\"><div className=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">{value}</div><span className=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">{change}</span></div></div>); }",
-      "html": "<div class=\\\"rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-soft\\\"><div class=\\\"text-sm text-gray-500 dark:text-gray-400\\\">Active Users</div><div class=\\\"mt-2 flex items-baseline gap-2\\\"><div class=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">12,451</div><span class=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">+4.2%</span></div></div>",
+      "description": "Card with subtle glass surface and metric emphasis.",
+      "jsx": "export function StatsCard({ title = \\\"Active Users\\\", value = \\\"12,451\\\", change = \\\"+4.2%\\\" }) { return (<div className=\\\"rounded-xl p-4 bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft transition-colors\\\"><div className=\\\"text-sm text-gray-500 dark:text-gray-400\\\">{title}</div><div className=\\\"mt-2 flex items-baseline gap-2\\\"><div className=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">{value}</div><span className=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">{change}</span></div></div>); }",
+      "html": "<div class=\\\"rounded-xl p-4 bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft\\\"><div class=\\\"text-sm text-gray-500 dark:text-gray-400\\\">Active Users</div><div class=\\\"mt-2 flex items-baseline gap-2\\\"><div class=\\\"text-2xl font-bold text-gray-900 dark:text-white\\\">12,451</div><span class=\\\"text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded\\\">+4.2%</span></div></div>",
       "props": [
         { "name": "title", "type": "string", "default": "Active Users", "description": "Card title" },
         { "name": "value", "type": "string", "default": "12,451", "description": "Primary metric" },
@@ -42,13 +66,426 @@
       "tags": ["responsive", "accessible", "dark", "light"],
       "previewType": "live",
       "description": "Text input with floating label and focus ring.",
-      "jsx": "export function FloatingLabelInput({ id = \\\"email\\\", label = \\\"Email\\\", type = \\\"email\\\", placeholder = \\\"you@example.com\\\" }) { return (<div className=\\\"relative\\\"><input id={id} type={type} placeholder=\\\" \\\" className=\\\"peer input placeholder-transparent\\\"></input><label htmlFor={id} className=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">{label}</label></div>); }",
-      "html": "<div class=\\\"relative\\\"><input id=\\\"email\\\" type=\\\"email\\\" placeholder=\\\" \\\" class=\\\"peer w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500/40 placeholder-transparent\\\"><label for=\\\"email\\\" class=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">Email</label></div>",
-      "props": [
-        { "name": "id", "type": "string", "default": "email", "description": "Input id" },
-        { "name": "label", "type": "string", "default": "Email", "description": "Floating label text" },
-        { "name": "type", "type": "string", "default": "email", "description": "Input type" }
-      ]
+      "jsx": "export function FloatingLabelInput({ id = \\\"email\\\", label = \\\"Email\\\", type = \\\"email\\\" }) { return (<div className=\\\"relative\\\"><input id={id} type={type} placeholder=\\\" \\\" className=\\\"peer w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ocean/40 placeholder-transparent\\\" /><label htmlFor={id} className=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">{label}</label></div>); }",
+      "html": "<div class=\\\"relative\\\"><input id=\\\"email\\\" type=\\\"email\\\" placeholder=\\\" \\\" class=\\\"peer w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40 placeholder-transparent\\\"><label for=\\\"email\\\" class=\\\"absolute left-3 -top-2.5 bg-white dark:bg-gray-900 px-1 text-xs text-gray-500 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-gray-500 transition-all\\\">Email</label></div>"
+    },
+
+    {
+      "id": "layout-hero-section",
+      "name": "Hero Section",
+      "category": "Layout",
+      "tags": ["responsive", "gradient", "dark", "light"],
+      "previewType": "snippet",
+      "description": "A simple centered hero with gradient headline and action buttons.",
+      "jsx": "<section className=\\\"text-center p-10 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h1 className=\\\"text-3xl font-extrabold\\\"><span className=\\\"bg-clip-text text-transparent\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%, #902d9a 20%, #1840a0 100%)'}} >Build faster with Ocean UI</span></h1><p className=\\\"mt-2 text-gray-600 dark:text-gray-300\\\">Beautiful React + Tailwind blocks.</p><div className=\\\"mt-4 flex justify-center gap-2\\\"><button className=\\\"btn\\\">Get Started</button><button className=\\\"px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60\\\">Learn more</button></div></section>",
+      "html": "<section class=\\\"text-center p-10 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h1 class=\\\"text-3xl font-extrabold\\\"><span class=\\\"bg-clip-text text-transparent\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%, #902d9a 20%, #1840a0 100%);\\\">Build faster with Ocean UI</span></h1><p class=\\\"mt-2 text-gray-600 dark:text-gray-300\\\">Beautiful React + Tailwind blocks.</p><div class=\\\"mt-4 flex justify-center gap-2\\\"><button class=\\\"btn\\\">Get Started</button><button class=\\\"px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60\\\">Learn more</button></div></section>"
+    },
+    {
+      "id": "layout-navbar",
+      "name": "Navbar",
+      "category": "Layout",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Top navbar with brand and simple links.",
+      "jsx": "<nav className=\\\"flex items-center justify-between p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-8 w-8 rounded-lg shadow-soft\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}></div><ul className=\\\"hidden sm:flex gap-4 text-sm text-gray-600 dark:text-gray-300\\\"><li>Docs</li><li>Pricing</li><li>Contact</li></ul><button className=\\\"btn\\\">Sign in</button></nav>",
+      "html": "<nav class=\\\"flex items-center justify-between p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-8 w-8 rounded-lg shadow-soft\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\"></div><ul class=\\\"hidden sm:flex gap-4 text-sm text-gray-600 dark:text-gray-300\\\"><li>Docs</li><li>Pricing</li><li>Contact</li></ul><button class=\\\"btn\\\">Sign in</button></nav>"
+    },
+    {
+      "id": "layout-sidebar",
+      "name": "Sidebar",
+      "category": "Layout",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Left sidebar shell with links.",
+      "jsx": "<aside className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h3 className=\\\"font-semibold\\\">Menu</h3><ul className=\\\"mt-2 space-y-1 text-sm\\\"><li className=\\\"px-2 py-1 rounded text-white\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}>Dashboard</li><li className=\\\"px-2 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Projects</li><li className=\\\"px-2 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Settings</li></ul></aside>",
+      "html": "<aside class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h3 class=\\\"font-semibold\\\">Menu</h3><ul class=\\\"mt-2 space-y-1 text-sm\\\"><li class=\\\"px-2 py-1 rounded text-white\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\">Dashboard</li><li class=\\\"px-2 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Projects</li><li class=\\\"px-2 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Settings</li></ul></aside>"
+    },
+    {
+      "id": "layout-footer",
+      "name": "Footer",
+      "category": "Layout",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Simple footer with links.",
+      "jsx": "<footer className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><div className=\\\"flex flex-wrap items-center justify-between gap-2\\\"><span>© 2025 Ocean UI</span><div className=\\\"flex gap-3\\\"><a>Docs</a><a>GitHub</a><a>Twitter</a></div></div></footer>",
+      "html": "<footer class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><div class=\\\"flex flex-wrap items-center justify-between gap-2\\\"><span>© 2025 Ocean UI</span><div class=\\\"flex gap-3\\\"><a>Docs</a><a>GitHub</a><a>Twitter</a></div></div></footer>"
+    },
+    {
+      "id": "layout-404-page",
+      "name": "404 Page",
+      "category": "Layout",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Minimal not found state.",
+      "jsx": "<section className=\\\"text-center p-10 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"text-5xl\\\">🧭</div><h2 className=\\\"mt-2 font-bold text-2xl\\\">Page not found</h2><p className=\\\"text-gray-600 dark:text-gray-300\\\">The page you are looking for does not exist.</p><button className=\\\"btn mt-4\\\">Go home</button></section>",
+      "html": "<section class=\\\"text-center p-10 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"text-5xl\\\">🧭</div><h2 class=\\\"mt-2 font-bold text-2xl\\\">Page not found</h2><p class=\\\"text-gray-600 dark:text-gray-300\\\">The page you are looking for does not exist.</p><button class=\\\"btn mt-4\\\">Go home</button></section>"
+    },
+    {
+      "id": "layout-about-page",
+      "name": "About Page",
+      "category": "Layout",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Two column about section.",
+      "jsx": "<section className=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h2 className=\\\"font-bold text-xl\\\">About Ocean UI</h2><div className=\\\"mt-3 grid sm:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-300\\\"><p>Ocean UI is a component library focused on speed and aesthetics.</p><p>Built with React and Tailwind for modern apps.</p></div></section>",
+      "html": "<section class=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h2 class=\\\"font-bold text-xl\\\">About Ocean UI</h2><div class=\\\"mt-3 grid sm:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-300\\\"><p>Ocean UI is a component library focused on speed and aesthetics.</p><p>Built with React and Tailwind for modern apps.</p></div></section>"
+    },
+    {
+      "id": "layout-empty-state",
+      "name": "Empty State",
+      "category": "Layout",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Compact empty state with CTA.",
+      "jsx": "<div className=\\\"p-8 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"text-4xl\\\">📭</div><h3 className=\\\"mt-2 font-semibold\\\">Nothing here yet</h3><p className=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Create your first item to get started.</p><button className=\\\"btn mt-3\\\">Create</button></div>",
+      "html": "<div class=\\\"p-8 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"text-4xl\\\">📭</div><h3 class=\\\"mt-2 font-semibold\\\">Nothing here yet</h3><p class=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Create your first item to get started.</p><button class=\\\"btn mt-3\\\">Create</button></div>"
+    },
+    {
+      "id": "layout-command-palette",
+      "name": "Command Palette",
+      "category": "Layout",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Floating command panel with search.",
+      "jsx": "<div className=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div className=\\\"text-sm text-gray-500\\\">Type a command</div><input className=\\\"input mt-2\\\" placeholder=\\\"Search...\\\"/></div>",
+      "html": "<div class=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div class=\\\"text-sm text-gray-500\\\">Type a command</div><input class=\\\"w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40 mt-2\\\" placeholder=\\\"Search...\\\"></div>"
+    },
+
+    {
+      "id": "auth-login-page",
+      "name": "Login Page",
+      "category": "Auth",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Minimal login form.",
+      "jsx": "<form className=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 space-y-3\\\"><h2 className=\\\"font-semibold\\\">Sign in</h2><input className=\\\"input\\\" placeholder=\\\"Email\\\"/><input className=\\\"input\\\" placeholder=\\\"Password\\\" type=\\\"password\\\"/><button className=\\\"btn w-full\\\">Login</button></form>",
+      "html": "<form class=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 space-y-3\\\"><h2 class=\\\"font-semibold\\\">Sign in</h2><input class=\\\"input\\\" placeholder=\\\"Email\\\"><input class=\\\"input\\\" placeholder=\\\"Password\\\" type=\\\"password\\\"><button class=\\\"btn w-full\\\">Login</button></form>"
+    },
+    {
+      "id": "auth-registration-page",
+      "name": "Registration Page",
+      "category": "Auth",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Registration form with name/email/pass.",
+      "jsx": "<form className=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 space-y-3\\\"><h2 className=\\\"font-semibold\\\">Create account</h2><input className=\\\"input\\\" placeholder=\\\"Name\\\"/><input className=\\\"input\\\" placeholder=\\\"Email\\\"/><input className=\\\"input\\\" placeholder=\\\"Password\\\" type=\\\"password\\\"/><button className=\\\"btn w-full\\\">Sign up</button></form>",
+      "html": "<form class=\\\"p-6 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 space-y-3\\\"><h2 class=\\\"font-semibold\\\">Create account</h2><input class=\\\"input\\\" placeholder=\\\"Name\\\"><input class=\\\"input\\\" placeholder=\\\"Email\\\"><input class=\\\"input\\\" placeholder=\\\"Password\\\" type=\\\"password\\\"><button class=\\\"btn w-full\\\">Sign up</button></form>"
+    },
+
+    {
+      "id": "nav-flyout-menu",
+      "name": "Flyout Menu",
+      "category": "Navigation",
+      "tags": ["responsive", "animated", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Top nav with flyout dropdown.",
+      "jsx": "<div className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><button className=\\\"btn\\\">Products</button><div className=\\\"mt-3 p-3 rounded-lg bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft\\\"><a className=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Analytics</a><a className=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Automation</a></div></div>",
+      "html": "<div class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><button class=\\\"btn\\\">Products</button><div class=\\\"mt-3 p-3 rounded-lg bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-soft\\\"><a class=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Analytics</a><a class=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Automation</a></div></div>"
+    },
+    {
+      "id": "nav-breadcrumbs",
+      "name": "Breadcrumbs",
+      "category": "Navigation",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Breadcrumb navigation with separators.",
+      "jsx": "<nav className=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><ol className=\\\"flex items-center gap-2\\\"><li><a className=\\\"text-blue-600 dark:text-blue-400\\\">Home</a></li><li>›</li><li><a className=\\\"text-blue-600 dark:text-blue-400\\\">Library</a></li><li>›</li><li>Data</li></ol></nav>",
+      "html": "<nav class=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><ol class=\\\"flex items-center gap-2\\\"><li><a class=\\\"text-blue-600 dark:text-blue-400\\\">Home</a></li><li>›</li><li><a class=\\\"text-blue-600 dark:text-blue-400\\\">Library</a></li><li>›</li><li>Data</li></ol></nav>"
+    },
+    {
+      "id": "nav-pagination",
+      "name": "Pagination",
+      "category": "Navigation",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Numbered pagination with prev/next.",
+      "jsx": "<div className=\\\"inline-flex items-center gap-2 p-2 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><button className=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Prev</button><button className=\\\"px-3 py-1 rounded text-white\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}>1</button><button className=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">2</button><button className=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">3</button><button className=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Next</button></div>",
+      "html": "<div class=\\\"inline-flex items-center gap-2 p-2 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><button class=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Prev</button><button class=\\\"px-3 py-1 rounded text-white\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\">1</button><button class=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">2</button><button class=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">3</button><button class=\\\"px-3 py-1 rounded bg-white/60 dark:bg-gray-900/60\\\">Next</button></div>"
+    },
+    {
+      "id": "nav-tabs",
+      "name": "Tabs",
+      "category": "Navigation",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Basic tabs variant.",
+      "jsx": "<div className=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"inline-flex rounded-lg ring-1 ring-black/5 overflow-hidden\\\"><button className=\\\"px-3 py-1.5 text-white\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}>Overview</button><button className=\\\"px-3 py-1.5 bg-white/60 dark:bg-gray-900/60\\\">Details</button><button className=\\\"px-3 py-1.5 bg-white/60 dark:bg-gray-900/60\\\">Reviews</button></div></div>",
+      "html": "<div class=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"inline-flex rounded-lg ring-1 ring-black/5 overflow-hidden\\\"><button class=\\\"px-3 py-1.5 text-white\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\">Overview</button><button class=\\\"px-3 py-1.5 bg-white/60 dark:bg-gray-900/60\\\">Details</button><button class=\\\"px-3 py-1.5 bg-white/60 dark:bg-gray-900/60\\\">Reviews</button></div></div>"
+    },
+    {
+      "id": "nav-stepper",
+      "name": "Stepper",
+      "category": "Navigation",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Horizontal stepper indicator.",
+      "jsx": "<ol className=\\\"flex items-center gap-3 p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><li className=\\\"inline-flex items-center gap-2\\\"><span className=\\\"h-6 w-6 rounded-full text-white flex items-center justify-center\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}>1</span> Cart</li><li>—</li><li>Shipping</li><li>—</li><li>Payment</li></ol>",
+      "html": "<ol class=\\\"flex items-center gap-3 p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm\\\"><li class=\\\"inline-flex items-center gap-2\\\"><span class=\\\"h-6 w-6 rounded-full text-white flex items-center justify-center\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\">1</span> Cart</li><li>—</li><li>Shipping</li><li>—</li><li>Payment</li></ol>"
+    },
+
+    {
+      "id": "block-bento",
+      "name": "Bento",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Bento grid showcasing features.",
+      "jsx": "<section className=\\\"grid sm:grid-cols-2 gap-3\\\"><div className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\">Fast</div><div className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\">Flexible</div><div className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 sm:col-span-2\\\">Beautiful</div></section>",
+      "html": "<section class=\\\"grid sm:grid-cols-2 gap-3\\\"><div class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\">Fast</div><div class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\">Flexible</div><div class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 sm:col-span-2\\\">Beautiful</div></section>"
+    },
+    {
+      "id": "block-testimonial",
+      "name": "Testimonial",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Quote with avatar.",
+      "jsx": "<blockquote className=\\\"p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><p>“Ocean UI doubled our velocity.”</p><footer className=\\\"mt-3 flex items-center gap-2 text-sm\\\"><span className=\\\"h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700\\\"></span><div><div className=\\\"font-medium\\\">Alex Doe</div><div className=\\\"text-gray-500\\\">Founder</div></div></footer></blockquote>",
+      "html": "<blockquote class=\\\"p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><p>“Ocean UI doubled our velocity.”</p><footer class=\\\"mt-3 flex items-center gap-2 text-sm\\\"><span class=\\\"h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700\\\"></span><div><div class=\\\"font-medium\\\">Alex Doe</div><div class=\\\"text-gray-500\\\">Founder</div></div></footer></blockquote>"
+    },
+    {
+      "id": "block-pricing",
+      "name": "Pricing",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "gradient", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Simple 3-tier pricing.",
+      "jsx": "<section className=\\\"grid sm:grid-cols-3 gap-3\\\"><div className=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"><h3>Free</h3><p className=\\\"text-3xl font-bold\\\">$0</p><button className=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Choose</button></div><div className=\\\"p-4 rounded-xl text-white ring-1 ring-black/5\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}><h3>Pro</h3><p className=\\\"text-3xl font-bold\\\">$19</p><button className=\\\"px-3 py-2 rounded-lg bg-white/20\\\">Choose</button></div><div className=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"><h3>Team</h3><p className=\\\"text-3xl font-bold\\\">$49</p><button className=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Choose</button></div></section>",
+      "html": "<section class=\\\"grid sm:grid-cols-3 gap-3\\\"><div class=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"><h3>Free</h3><p class=\\\"text-3xl font-bold\\\">$0</p><button class=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Choose</button></div><div class=\\\"p-4 rounded-xl text-white ring-1 ring-black/5\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\"><h3>Pro</h3><p class=\\\"text-3xl font-bold\\\">$19</p><button class=\\\"px-3 py-2 rounded-lg bg-white/20\\\">Choose</button></div><div class=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"><h3>Team</h3><p class=\\\"text-3xl font-bold\\\">$49</p><button class=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Choose</button></div></section>"
+    },
+    {
+      "id": "block-newsletter",
+      "name": "Newsletter Section",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Signup box with input.",
+      "jsx": "<form className=\\\"p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h3 className=\\\"font-semibold\\\">Get updates</h3><div className=\\\"mt-3 flex gap-2\\\"><input className=\\\"input\\\" placeholder=\\\"you@example.com\\\"/><button className=\\\"btn\\\">Subscribe</button></div></form>",
+      "html": "<form class=\\\"p-5 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><h3 class=\\\"font-semibold\\\">Get updates</h3><div class=\\\"mt-3 flex gap-2\\\"><input class=\\\"input\\\" placeholder=\\\"you@example.com\\\"><button class=\\\"btn\\\">Subscribe</button></div></form>"
+    },
+    {
+      "id": "block-team",
+      "name": "Team Section",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Team grid with avatars.",
+      "jsx": "<section className=\\\"grid grid-cols-2 sm:grid-cols-4 gap-3\\\"><div className=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div className=\\\"mt-2 text-sm\\\">Taylor</div></div><div className=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div className=\\\"mt-2 text-sm\\\">Jordan</div></div><div className=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div className=\\\"mt-2 text-sm\\\">Riley</div></div><div className=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div className=\\\"mt-2 text-sm\\\">Sam</div></div></section>",
+      "html": "<section class=\\\"grid grid-cols-2 sm:grid-cols-4 gap-3\\\"><div class=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div class=\\\"mt-2 text-sm\\\">Taylor</div></div><div class=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div class=\\\"mt-2 text-sm\\\">Jordan</div></div><div class=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div class=\\\"mt-2 text-sm\\\">Riley</div></div><div class=\\\"p-3 text-center rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-12 w-12 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto\\\"></div><div class=\\\"mt-2 text-sm\\\">Sam</div></div></section>"
+    },
+    {
+      "id": "block-logo-clouds",
+      "name": "Logo Clouds",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Wall of logos.",
+      "jsx": "<div className=\\\"grid grid-cols-3 sm:grid-cols-6 gap-3 p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div className=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div></div>",
+      "html": "<div class=\\\"grid grid-cols-3 sm:grid-cols-6 gap-3 p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div><div class=\\\"h-10 bg-gray-200 dark:bg-gray-700 rounded\\\"></div></div>"
+    },
+    {
+      "id": "block-news-updates",
+      "name": "News/Updates",
+      "category": "Content/Blocks",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Simple updates list.",
+      "jsx": "<ul className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm space-y-2\\\"><li><span className=\\\"px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400\\\">New</span> Components added</li><li><span className=\\\"px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400\\\">Improved</span> Search quality</li></ul>",
+      "html": "<ul class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 text-sm space-y-2\\\"><li><span class=\\\"px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400\\\">New</span> Components added</li><li><span class=\\\"px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400\\\">Improved</span> Search quality</li></ul>"
+    },
+
+    {
+      "id": "ui-buttons",
+      "name": "Buttons",
+      "category": "UI Elements",
+      "tags": ["responsive", "gradient", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Button variants.",
+      "jsx": "<div className=\\\"flex flex-wrap gap-2\\\"><button className=\\\"btn\\\">Primary</button><button className=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60 ring-1 ring-black/5\\\">Secondary</button><button className=\\\"px-3 py-2 rounded-lg bg-emerald-600 text-white\\\">Success</button></div>",
+      "html": "<div class=\\\"flex flex-wrap gap-2\\\"><button class=\\\"btn\\\">Primary</button><button class=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60 ring-1 ring-black/5\\\">Secondary</button><button class=\\\"px-3 py-2 rounded-lg bg-emerald-600 text-white\\\">Success</button></div>"
+    },
+    {
+      "id": "ui-cards",
+      "name": "Cards",
+      "category": "UI Elements",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Basic card composition.",
+      "jsx": "<div className=\\\"card p-4\\\"><h4 className=\\\"font-semibold\\\">Card title</h4><p className=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Card content goes here.</p></div>",
+      "html": "<div class=\\\"bg-white/80 dark:bg-gray-900/80 rounded-xl border border-gray-200/70 dark:border-gray-800 ring-1 ring-black/5 shadow-soft backdrop-blur-xs p-4\\\"><h4 class=\\\"font-semibold\\\">Card title</h4><p class=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Card content goes here.</p></div>"
+    },
+    {
+      "id": "ui-forms",
+      "name": "Forms",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Form controls group.",
+      "jsx": "<form className=\\\"space-y-2\\\"><input className=\\\"input\\\" placeholder=\\\"Name\\\"/><input className=\\\"input\\\" placeholder=\\\"Email\\\"/><button className=\\\"btn\\\">Submit</button></form>",
+      "html": "<form class=\\\"space-y-2\\\"><input class=\\\"w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40\\\" placeholder=\\\"Name\\\"><input class=\\\"w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40\\\" placeholder=\\\"Email\\\"><button class=\\\"btn\\\">Submit</button></form>"
+    },
+    {
+      "id": "ui-modal",
+      "name": "Modal",
+      "category": "UI Elements",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Centered modal card.",
+      "jsx": "<div className=\\\"p-6 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><h4 className=\\\"font-semibold\\\">Modal title</h4><p className=\\\"text-sm text-gray-600 dark:text-gray-300\\\">This is a modal preview.</p><div className=\\\"mt-3 flex justify-end gap-2\\\"><button className=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Cancel</button><button className=\\\"btn\\\">Confirm</button></div></div>",
+      "html": "<div class=\\\"p-6 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><h4 class=\\\"font-semibold\\\">Modal title</h4><p class=\\\"text-sm text-gray-600 dark:text-gray-300\\\">This is a modal preview.</p><div class=\\\"mt-3 flex justify-end gap-2\\\"><button class=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60\\\">Cancel</button><button class=\\\"btn\\\">Confirm</button></div></div>"
+    },
+    {
+      "id": "ui-tooltip",
+      "name": "Tooltip",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Simple tooltip bubble.",
+      "jsx": "<div className=\\\"inline-block relative\\\"><button className=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60 ring-1 ring-black/5\\\">Hover</button><div className=\\\"absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 rounded bg-gray-900 text-white text-xs\\\">Tooltip text</div></div>",
+      "html": "<div class=\\\"inline-block relative\\\"><button class=\\\"px-3 py-2 rounded-lg bg-white/60 dark:bg-gray-900/60 ring-1 ring-black/5\\\">Hover</button><div class=\\\"absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 rounded bg-gray-900 text-white text-xs\\\">Tooltip text</div></div>"
+    },
+    {
+      "id": "ui-dropdown",
+      "name": "Dropdown",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Menu dropdown.",
+      "jsx": "<div className=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 inline-block\\\"><button className=\\\"btn\\\">Open</button><div className=\\\"mt-2 rounded-lg bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 p-2\\\"><a className=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Item A</a><a className=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Item B</a></div></div>",
+      "html": "<div class=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5 inline-block\\\"><button class=\\\"btn\\\">Open</button><div class=\\\"mt-2 rounded-lg bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 p-2\\\"><a class=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Item A</a><a class=\\\"block px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800\\\">Item B</a></div></div>"
+    },
+    {
+      "id": "ui-alerts",
+      "name": "Alerts",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Status alerts.",
+      "jsx": "<div className=\\\"space-y-2\\\"><div className=\\\"px-3 py-2 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400\\\">Success saved</div><div className=\\\"px-3 py-2 rounded bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-400\\\">Warning action</div><div className=\\\"px-3 py-2 rounded bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400\\\">Error occurred</div></div>",
+      "html": "<div class=\\\"space-y-2\\\"><div class=\\\"px-3 py-2 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400\\\">Success saved</div><div class=\\\"px-3 py-2 rounded bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-400\\\">Warning action</div><div class=\\\"px-3 py-2 rounded bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400\\\">Error occurred</div></div>"
+    },
+    {
+      "id": "ui-badge",
+      "name": "Badge",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Small status badge.",
+      "jsx": "<span className=\\\"inline-flex items-center rounded-full px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200\\\">Beta</span>",
+      "html": "<span class=\\\"inline-flex items-center rounded-full px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200\\\">Beta</span>"
+    },
+    {
+      "id": "ui-avatar",
+      "name": "Avatar",
+      "category": "UI Elements",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Rounded avatar.",
+      "jsx": "<div className=\\\"h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 ring-1 ring-black/5\\\"></div>",
+      "html": "<div class=\\\"h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 ring-1 ring-black/5\\\"></div>"
+    },
+    {
+      "id": "ui-toast",
+      "name": "Toast",
+      "category": "UI Elements",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Toast message box.",
+      "jsx": "<div className=\\\"px-3 py-2 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft text-sm\\\">Saved successfully</div>",
+      "html": "<div class=\\\"px-3 py-2 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft text-sm\\\">Saved successfully</div>"
+    },
+
+    {
+      "id": "data-calendar",
+      "name": "Calendar",
+      "category": "Data Display",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Monthly calendar grid.",
+      "jsx": "<div className=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"grid grid-cols-7 gap-1 text-center text-xs\\\">{Array.from({length:14}).map((_,i)=> <div key={i} className=\\\"px-2 py-3 rounded bg-white/60 dark:bg-gray-900/60\\\">{i+1}</div>)}</div></div>",
+      "html": "<div class=\\\"p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"grid grid-cols-7 gap-1 text-center text-xs\\\"><div class=\\\"px-2 py-3 rounded bg-white/60 dark:bg-gray-900/60\\\">1</div><div class=\\\"px-2 py-3 rounded bg-white/60 dark:bg-gray-900/60\\\">2</div><div class=\\\"px-2 py-3 rounded bg-white/60 dark:bg-gray-900/60\\\">3</div><div class=\\\"px-2 py-3 rounded bg-white/60 dark:bg-gray-900/60\\\">4</div></div></div>"
+    },
+    {
+      "id": "data-data-table",
+      "name": "Data Table",
+      "category": "Data Display",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Table with header and rows.",
+      "jsx": "<table className=\\\"w-full text-sm rounded-xl overflow-hidden ring-1 ring-black/5\\\"><thead className=\\\"bg-gray-50 dark:bg-gray-800\\\"><tr><th className=\\\"text-left p-2\\\">Name</th><th className=\\\"text-left p-2\\\">Role</th></tr></thead><tbody className=\\\"bg-white/70 dark:bg-gray-900/70\\\"><tr><td className=\\\"p-2\\\">Alex</td><td className=\\\"p-2\\\">Engineer</td></tr><tr><td className=\\\"p-2\\\">Taylor</td><td className=\\\"p-2\\\">Designer</td></tr></tbody></table>",
+      "html": "<table class=\\\"w-full text-sm rounded-xl overflow-hidden ring-1 ring-black/5\\\"><thead class=\\\"bg-gray-50 dark:bg-gray-800\\\"><tr><th class=\\\"text-left p-2\\\">Name</th><th class=\\\"text-left p-2\\\">Role</th></tr></thead><tbody class=\\\"bg-white/70 dark:bg-gray-900/70\\\"><tr><td class=\\\"p-2\\\">Alex</td><td class=\\\"p-2\\\">Engineer</td></tr><tr><td class=\\\"p-2\\\">Taylor</td><td class=\\\"p-2\\\">Designer</td></tr></tbody></table>"
+    },
+    {
+      "id": "data-table",
+      "name": "Table",
+      "category": "Data Display",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Basic table.",
+      "jsx": "<table className=\\\"w-full text-sm rounded-xl overflow-hidden ring-1 ring-black/5\\\"><thead className=\\\"bg-gray-50 dark:bg-gray-800\\\"><tr><th className=\\\"text-left p-2\\\">Col A</th><th className=\\\"text-left p-2\\\">Col B</th></tr></thead><tbody className=\\\"bg-white/70 dark:bg-gray-900/70\\\"><tr><td className=\\\"p-2\\\">A1</td><td className=\\\"p-2\\\">B1</td></tr><tr><td className=\\\"p-2\\\">A2</td><td className=\\\"p-2\\\">B2</td></tr></tbody></table>",
+      "html": "<table class=\\\"w-full text-sm rounded-xl overflow-hidden ring-1 ring-black/5\\\"><thead class=\\\"bg-gray-50 dark:bg-gray-800\\\"><tr><th class=\\\"text-left p-2\\\">Col A</th><th class=\\\"text-left p-2\\\">Col B</th></tr></thead><tbody class=\\\"bg-white/70 dark:bg-gray-900/70\\\"><tr><td class=\\\"p-2\\\">A1</td><td class=\\\"p-2\\\">B1</td></tr><tr><td class=\\\"p-2\\\">A2</td><td class=\\\"p-2\\\">B2</td></tr></tbody></table>"
+    },
+
+    {
+      "id": "int-accordion",
+      "name": "Accordion",
+      "category": "Interaction",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Static accordion preview.",
+      "jsx": "<div className=\\\"space-y-2\\\"><div className=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"font-medium\\\">Section 1</div><div className=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Content</div></div><div className=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"font-medium\\\">Section 2</div></div></div>",
+      "html": "<div class=\\\"space-y-2\\\"><div class=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"font-medium\\\">Section 1</div><div class=\\\"text-sm text-gray-600 dark:text-gray-300\\\">Content</div></div><div class=\\\"p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"font-medium\\\">Section 2</div></div></div>"
+    },
+    {
+      "id": "int-carousel",
+      "name": "Carousel",
+      "category": "Interaction",
+      "tags": ["responsive", "animated", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Carousel card stack.",
+      "jsx": "<div className=\\\"flex gap-3 overflow-x-auto p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div className=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div><div className=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div><div className=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div></div>",
+      "html": "<div class=\\\"flex gap-3 overflow-x-auto p-3 rounded-xl bg-white/70 dark:bg-gray-900/70 ring-1 ring-black/5\\\"><div class=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div><div class=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div><div class=\\\"h-24 w-40 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\"></div></div>"
+    },
+    {
+      "id": "int-toast",
+      "name": "Toast",
+      "category": "Interaction",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Toast duplicate to show in Interaction category.",
+      "jsx": "<div className=\\\"px-3 py-2 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft text-sm\\\">Action completed</div>",
+      "html": "<div class=\\\"px-3 py-2 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft text-sm\\\">Action completed</div>"
+    },
+    {
+      "id": "int-command-palette",
+      "name": "Command Palette",
+      "category": "Interaction",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Command palette duplicate in Interaction.",
+      "jsx": "<div className=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div className=\\\"text-sm text-gray-500\\\">Run a command</div><input className=\\\"input mt-2\\\" placeholder=\\\"Type...\\\"/></div>",
+      "html": "<div class=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div class=\\\"text-sm text-gray-500\\\">Run a command</div><input class=\\\"w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40 mt-2\\\" placeholder=\\\"Type...\\\"></div>"
+    },
+
+    {
+      "id": "chat-chatbot",
+      "name": "Chatbot",
+      "category": "Chat",
+      "tags": ["responsive", "glass", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Chatbot panel mock.",
+      "jsx": "<div className=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div className=\\\"h-40 rounded-lg bg-white/60 dark:bg-gray-900/60\\\"></div><div className=\\\"mt-3 flex gap-2\\\"><input className=\\\"input\\\" placeholder=\\\"Ask anything...\\\"/><button className=\\\"btn\\\">Send</button></div></div>",
+      "html": "<div class=\\\"p-4 rounded-xl bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5 shadow-soft\\\"><div class=\\\"h-40 rounded-lg bg-white/60 dark:bg-gray-900/60\\\"></div><div class=\\\"mt-3 flex gap-2\\\"><input class=\\\"w-full rounded-lg border border-gray-300/80 dark:border-gray-700/80 bg-white/70 dark:bg-gray-900/70 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-700/40\\\" placeholder=\\\"Ask anything...\\\"><button class=\\\"btn\\\">Send</button></div></div>"
+    },
+    {
+      "id": "chat-message-ui",
+      "name": "Chatbot Message UI",
+      "category": "Chat",
+      "tags": ["responsive", "dark", "light"],
+      "previewType": "snippet",
+      "description": "Messages left/right bubbles.",
+      "jsx": "<div className=\\\"space-y-2\\\"><div className=\\\"max-w-[70%] p-2 rounded-lg bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\">Hello! How can I help?</div><div className=\\\"max-w-[70%] p-2 rounded-lg text-white ml-auto\\\" style={{backgroundImage:'linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%)'}}>I need some components.</div></div>",
+      "html": "<div class=\\\"space-y-2\\\"><div class=\\\"max-w-[70%] p-2 rounded-lg bg-white/80 dark:bg-gray-900/80 ring-1 ring-black/5\\\">Hello! How can I help?</div><div class=\\\"max-w-[70%] p-2 rounded-lg text-white ml-auto\\\" style=\\\"background-image:linear-gradient(45deg,#af2497 10%,#902d9a 20%,#1840a0 100%);\\\">I need some components.</div></div>"
     }
   ]
 }

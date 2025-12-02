@@ -44,6 +44,45 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
+  // Build counts for sidebar (based on current filter query)
+  const params = new URLSearchParams(location.search);
+  const baseList = useMemo(() => {
+    // list before category filter so counts reflect per-category availability under current search/tags
+    const q = (params.get('q') || '').trim();
+    const selectedTags = (params.get('tags') || '').split(',').filter(Boolean);
+    let list = components;
+    if (selectedTags.length) list = list.filter((c) => selectedTags.every((t) => c.tags.includes(t)));
+    if (q) {
+      const fuse = new Fuse(list, { keys: ['name', 'category', 'tags'], threshold: 0.4 });
+      list = fuse.search(q).map((r) => r.item);
+    }
+    return list;
+  }, [location.search, components]);
+
+  const counts = useMemo(() => {
+    const byCat = {};
+    const byTag = {};
+    baseList.forEach((c) => {
+      byCat[c.category] = (byCat[c.category] || 0) + 1;
+      (c.tags || []).forEach((t) => { byTag[t] = (byTag[t] || 0) + 1; });
+    });
+    const totalAll = baseList.length;
+    return { byCat, byTag, totalAll };
+  }, [baseList]);
+
+  // Pass counts via URLSearchParams read by Sidebar (non-destructive to existing filters)
+  const sidebarQuery = useMemo(() => {
+    const q = new URLSearchParams(location.search);
+    // Clear previous counts
+    [...q.keys()].forEach((k) => {
+      if (k.startsWith('count_') || k.startsWith('count_tag_')) q.delete(k);
+    });
+    q.set('count_All', String(counts.totalAll));
+    categories.forEach((c) => q.set(`count_${c}`, String(counts.byCat[c] || 0)));
+    tags.forEach((t) => q.set(`count_tag_${t}`, String(counts.byTag[t] || 0)));
+    return `?${q.toString()}`;
+  }, [location.search, counts, categories, tags]);
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 grid md:grid-cols-[280px_1fr] gap-6">
       <Sidebar categories={categories} tags={tags} />
@@ -53,6 +92,8 @@ export default function Home() {
           <p className="text-sm text-gray-600 dark:text-gray-300">Ocean Professional theme • {items.length} items</p>
         </div>
         <ComponentGrid items={items} loading={loading} />
+        {/* Invisible anchor to set counts in URL so Sidebar can read (keeps Sidebar dumb) */}
+        <a href={sidebarQuery} className="hidden" aria-hidden="true" onClick={(e)=>e.preventDefault()} />
       </main>
     </div>
   );

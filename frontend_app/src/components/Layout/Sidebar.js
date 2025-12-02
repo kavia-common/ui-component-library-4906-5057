@@ -91,6 +91,8 @@ export default function Sidebar({ categories = [], tags = [] }) {
               <div className="mt-3 space-y-2">
                 {['All', ...categories].map((c) => {
                   const isActive = activeCat === c;
+                  // read counts from URLSearchParams if provided by Home (optional); fallback to empty
+                  const cntParam = params.get(`count_${c}`) || '';
                   return (
                     <button
                       key={c}
@@ -105,7 +107,7 @@ export default function Sidebar({ categories = [], tags = [] }) {
                       <span>{c}</span>
                       <span className={`ml-2 inline-flex items-center justify-center rounded-full px-2 py-0.5 text-xs ${
                         isActive ? 'bg-white/20 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
-                      }`}>{/* Count is visual hint; actual counts shown on Home header */}</span>
+                      }`}>{cntParam}</span>
                     </button>
                   );
                 })}
@@ -127,6 +129,7 @@ export default function Sidebar({ categories = [], tags = [] }) {
               <div className="mt-3 flex flex-wrap gap-2">
                 {tags.map((t) => {
                   const active = activeTags.includes(t);
+                  const cntParam = params.get(`count_tag_${t}`) || '';
                   return (
                     <button
                       key={t}
@@ -137,8 +140,9 @@ export default function Sidebar({ categories = [], tags = [] }) {
                           : 'bg-white/60 dark:bg-gray-900/60 text-gray-700 dark:text-gray-200 hover:bg-white/80 dark:hover:bg-gray-900/80'
                       }`}
                       style={active ? { backgroundImage: 'linear-gradient(45deg, #af2497 10%, #902d9a 20%, #1840a0 100%)' } : {}}
+                      title={cntParam ? `${t}: ${cntParam}` : `#${t}`}
                     >
-                      #{t}
+                      #{t}{cntParam ? ` (${cntParam})` : ''}
                     </button>
                   );
                 })}
